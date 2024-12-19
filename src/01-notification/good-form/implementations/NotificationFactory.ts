@@ -4,8 +4,8 @@ import { SMSNotifier } from '../implementations/SMSNotifier';
 import { PushNotifier } from '../implementations/PushNotifier';
 
 export class NotificationFactory {
-  static createNotifier(type: NotifierType): INotifier {
-    switch (type.toLowerCase()) {
+  static createNotifier(type: NotifierEnum): INotifier {
+    switch (type) {
       case NotifierEnum.EMAIL:
         return new EmailNotifier();
       case NotifierEnum.SMS:
@@ -18,7 +18,6 @@ export class NotificationFactory {
   }
 }
 
-export type NotifierType = 'email' | 'sms' | 'push';
 export enum NotifierEnum {
   EMAIL = 'email',
   SMS = 'sms',
